@@ -66,18 +66,18 @@ Setting up a GPU instance from scratch is time consuming (took me half a day), s
 After getting access to the image, use gcloud SDK to create the instance with the command
 
 ```
-gcloud compute instances create homework4 --image cattern --image-project august-ensign-168512 --no-boot-disk-auto-delete --machine-type n1-standard-8 --zone asia-east1-a
+gcloud compute instances create truevoice --image cattern --image-project august-ensign-168512 --no-boot-disk-auto-delete --machine-type n1-standard-8 --zone asia-east1-a
 ```
 
 If this completes successfully, you should see an instance in the GCloud web console.
 
 ## Setting up the machine ##
 
-The current machine has no gpu in it. We need to do one additional tweak to add a GPU to the instance. To edit the virtual instance, go to the **Compute Engine** menu on the left column of your dashboard (the cloud website) and click on **VM instances**. You should see an instance name **homework4**. Click on the 3 dots next to homework4, select **stop** to stop the instance. Stopping the instance shut downs the machine, but you can turn it back on (You will be charged only when the machine is turned on. You can also delete the instance after you are done with the lab afterwards.) Once the instance is stopped, the green color in front of the instance name should become grey as shown on the picture below.
+The current machine has no gpu in it. We need to do one additional tweak to add a GPU to the instance. To edit the virtual instance, go to the **Compute Engine** menu on the left column of your dashboard (the cloud website) and click on **VM instances**. You should see an instance name **truevoice**. Click on the 3 dots next to truevoice, select **stop** to stop the instance. Stopping the instance shut downs the machine, but you can turn it back on (You will be charged only when the machine is turned on. You can also delete the instance after you are done with the lab afterwards.) Once the instance is stopped, the green color in front of the instance name should become grey as shown on the picture below.
 
 ![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-start-stop-instance.png "google-cloud-start-stop-instance.png")
 
-Click on the instance name (homework4) to edit the instance. Here, we will add a gpu and do some additional tweaking. Click on **EDIT** at the top right next to VM instance details. Under **machine type** click **customize**. Select **GPUs**, change the number of **GPUs** to **1** and **GPU type** to **NVIDIA Tesla K80**. Scroll down to Firewalls, click **Allow HTTP traffic** and **Allow HTTPS traffic**. Click save to finish. Your setting should be similar to what shown below.
+Click on the instance name (truevoice) to edit the instance. Here, we will add a gpu and do some additional tweaking. Click on **EDIT** at the top right next to VM instance details. Under **machine type** click **customize**. Select **GPUs**, change the number of **GPUs** to **1** and **GPU type** to **NVIDIA Tesla K80**. Scroll down to Firewalls, click **Allow HTTP traffic** and **Allow HTTPS traffic**. Click save to finish. Your setting should be similar to what shown below.
 
 ![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-edit-instance.png "google-cloud-edit-instance.png")
 
@@ -88,7 +88,7 @@ Now that you have created your virtual GCE, you want to be able to connect to it
 ./<DIRECTORY-WHERE-GOOGLE-CLOUD-IS-INSTALLED>/bin/gcloud compute ssh --zone=asia-east1-a <YOUR-INSTANCE-NAME>
 ```
 
-where <YOUR-INSTANCE-NAME> should be homework4. See [this page](https://cloud.google.com/compute/docs/instances/connecting-to-instance) for more detailed instructions. You are now ready to work on Google Cloud. 
+where <YOUR-INSTANCE-NAME> should be truevoice. See [this page](https://cloud.google.com/compute/docs/instances/connecting-to-instance) for more detailed instructions. You are now ready to work on Google Cloud. 
 
 You should be logged in with the same name as your username on your local computer. We have setup the development environment under my user account (ekapolc). To switch user, do
 
@@ -264,7 +264,7 @@ Click on the blue **CREATE FIREWALL RULE** button. Enter whatever name you want:
 
 ## Adding a data disk ##
 
-The image we provided only have 10GB of disk space. You will need more in order to finish the lab. To do so first, stop the instance. Click on the instance name (homework4) to edit the instance on the web console interface (just like how you added the GPU). 
+The image we provided only have 10GB of disk space. You will need more in order to finish the lab. To do so first, stop the instance. Click on the instance name (truevoice) to edit the instance on the web console interface (just like how you added the GPU). 
 
 ![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-edit-instance.png "google-cloud-edit-instance.png")
 
